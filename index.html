@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#3346ff" />
+    <title>فروش‌یار | ورود و ثبت‌نام</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+
+  <body>
+    <div class="auth-shell">
+      <!-- ============ Brand panel (hidden under 940px) ============ -->
+      <section class="auth-brand">
+        <div class="auth-logo">
+          <div class="auth-logo-mark" data-icon="sparkle"></div>
+          <div class="auth-logo-name">فروش‌یار</div>
+        </div>
+
+        <div class="auth-pitch">
+          <h2>همه فروشگاهت،<br />آنلاین و حضوری،<br />در یک داشبورد.</h2>
+          <p>موجودی، سفارش‌ها و مشتری‌هات رو از یک‌جا مدیریت کن و دیگه نگران مغایرت بین کانال‌ها نباش.</p>
+
+          <div class="feature-list">
+            <div class="feature">
+              <div class="feature-icon" data-icon="inventory"></div>
+              <div><b>همگام‌سازی لحظه‌ای موجودی</b><span>بین فروش آنلاین و حضوری</span></div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon" data-icon="analytics"></div>
+              <div><b>گزارش‌های تحلیلی real-time</b><span>برای تصمیم‌گیری سریع‌تر</span></div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon" data-icon="customers"></div>
+              <div><b>دسترسی سطح‌بندی‌شده تیم</b><span>برای صاحب فروشگاه و اپراتورها</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-stats">
+          <div><b>+۵۰۰</b><span>فروشگاه فعال</span></div>
+          <div><b>۹۹.۵٪</b><span>پایداری سرویس</span></div>
+          <div><b>۴.۸/۵</b><span>رضایت کاربران</span></div>
+        </div>
+      </section>
+
+      <!-- ============ Form panel ============ -->
+      <section class="auth-form-panel">
+        <div class="auth-form-wrap">
+          <div class="auth-tabs" role="tablist">
+            <button class="auth-tab active" data-view="login" role="tab">ورود</button>
+            <button class="auth-tab" data-view="signup" role="tab">ثبت‌نام</button>
+          </div>
+
+          <!-- ---------- Login ---------- -->
+          <div class="auth-view active" id="view-login">
+            <div class="auth-head">
+              <h1>خوش برگشتی</h1>
+              <p>برای ورود به داشبورد فروشگاهت اطلاعاتت رو وارد کن</p>
+            </div>
+
+            <form data-auth-form="login">
+              <div class="auth-field">
+                <label for="login-user">ایمیل یا شماره موبایل</label>
+                <div class="input-wrap">
+                  <span class="input-icon" data-icon="mail"></span>
+                  <input id="login-user" type="text" placeholder="example@mail.com" required />
+                </div>
+              </div>
+
+              <div class="auth-field">
+                <label for="login-pass">رمز عبور</label>
+                <div class="input-wrap">
+                  <span class="input-icon" data-icon="lock"></span>
+                  <input id="login-pass" type="password" placeholder="رمز عبور خود را وارد کنید" required />
+                  <button
+                    type="button"
+                    class="toggle-eye"
+                    data-toggle-password="login-pass"
+                    data-icon="eye"
+                    aria-label="نمایش رمز"
+                  ></button>
+                </div>
+              </div>
+
+              <div class="row-between">
+                <label class="check"><input type="checkbox" />مرا به‌خاطر بسپار</label>
+                <a href="#" class="text-link">فراموشی رمز عبور؟</a>
+              </div>
+
+              <button class="btn-submit" type="submit">
+                <span>ورود به داشبورد</span><i data-icon="arrowLeft"></i>
+              </button>
+            </form>
+
+            <div class="divider">یا ادامه با</div>
+            <div class="social-row">
+              <button class="social-btn" type="button" data-icon="google">گوگل</button>
+              <button class="social-btn" type="button" data-icon="phone">پیامک</button>
+            </div>
+
+            <div class="switch-line">
+              حساب کاربری نداری؟ <button type="button" data-view="signup">ثبت‌نام کن</button>
+            </div>
+          </div>
+
+          <!-- ---------- Sign up ---------- -->
+          <div class="auth-view" id="view-signup">
+            <div class="auth-head">
+              <h1>ساخت حساب فروشگاه</h1>
+              <p>در کمتر از ۲ دقیقه فروشگاهت رو راه بنداز</p>
+            </div>
+
+            <form data-auth-form="signup">
+              <div class="auth-field">
+                <label for="signup-store">نام فروشگاه</label>
+                <div class="input-wrap">
+                  <span class="input-icon" data-icon="store"></span>
+                  <input id="signup-store" type="text" placeholder="مثلاً فروشگاه رزا" required />
+                </div>
+              </div>
+
+              <div class="auth-field">
+                <label for="signup-user">ایمیل یا شماره موبایل</label>
+                <div class="input-wrap">
+                  <span class="input-icon" data-icon="mail"></span>
+                  <input id="signup-user" type="text" placeholder="example@mail.com" required />
+                </div>
+              </div>
+
+              <div class="auth-field">
+                <label for="signup-pass">رمز عبور</label>
+                <div class="input-wrap">
+                  <span class="input-icon" data-icon="lock"></span>
+                  <input id="signup-pass" type="password" placeholder="حداقل ۸ کاراکتر" minlength="8" required />
+                  <button
+                    type="button"
+                    class="toggle-eye"
+                    data-toggle-password="signup-pass"
+                    data-icon="eye"
+                    aria-label="نمایش رمز"
+                  ></button>
+                </div>
+                <div class="strength" id="strength">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+
+              <div class="auth-field" style="margin-bottom: 20px">
+                <label class="check">
+                  <input type="checkbox" required />
+                  <span>با <a href="#" class="text-link">قوانین و حریم خصوصی</a> فروش‌یار موافقم</span>
+                </label>
+              </div>
+
+              <button class="btn-submit" type="submit">
+                <span>ایجاد حساب فروشگاه</span><i data-icon="arrowLeft"></i>
+              </button>
+            </form>
+
+            <div class="switch-line" style="margin-top: 22px">
+              قبلاً ثبت‌نام کردی؟ <button type="button" data-view="login">وارد شو</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="js/icons.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

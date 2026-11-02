@@ -1,0 +1,270 @@
+/* ==========================================================================
+   layout.css — app shell: sidebar, topbar, main content area
+   ========================================================================== */
+
+/* ---------- Sidebar (fixed on the right because the UI is RTL) ---------- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  width: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  padding: 22px 16px;
+  overflow-y: auto;
+  color: rgba(255, 255, 255, 0.72);
+  background: linear-gradient(180deg, var(--brand-1), var(--brand-2));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px 22px;
+}
+
+.brand-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.brand-mark svg {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+}
+
+.nav-label {
+  padding: 14px 10px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.72);
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.nav-item svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.nav-item .badge {
+  margin-right: auto;
+  padding: 1px 7px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--accent);
+  background: #fff;
+}
+
+.nav-item.danger {
+  color: #ffd7d7;
+}
+
+.nav-item.danger:hover {
+  background: rgba(255, 80, 80, 0.15);
+  color: #fff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+/* Dark backdrop shown behind the drawer on small screens */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(15, 17, 35, 0.45);
+}
+
+.sidebar-overlay.show {
+  display: block;
+}
+
+/* ---------- Main area ---------- */
+.main {
+  min-width: 0;
+  min-height: 100vh;
+  margin-right: var(--sidebar-width);
+}
+
+.content {
+  max-width: 1600px;
+  margin-inline: auto;
+  padding: 24px 28px 60px;
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 28px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar-title {
+  min-width: 0;
+}
+
+.topbar h1 {
+  font-size: 19px;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topbar .sub {
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* Hamburger — only visible when the sidebar is a drawer */
+.menu-btn {
+  display: none;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.menu-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 980px) {
+  .content {
+    padding: 20px;
+  }
+}
+
+/* Sidebar becomes an off-canvas drawer */
+@media (max-width: 860px) {
+  .sidebar {
+    z-index: 60;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    box-shadow: -16px 0 40px rgba(0, 0, 0, 0.18);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main {
+    margin-right: 0;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
+
+  .topbar .search-box {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .content {
+    padding: 14px;
+  }
+
+  .topbar {
+    padding: 12px 14px;
+  }
+
+  .topbar h1 {
+    font-size: 16.5px;
+  }
+
+  .topbar .sub {
+    display: none;
+  }
+
+  .topbar-actions {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  /* Login button keeps only its icon */
+  .topbar-actions .btn.primary span {
+    display: none;
+  }
+
+  .topbar-actions .btn.primary {
+    padding: 9px;
+  }
+}

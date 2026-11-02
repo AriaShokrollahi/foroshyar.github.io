@@ -1,0 +1,769 @@
+/* ==========================================================================
+   components.css — reusable UI pieces
+   Each block keeps its own responsive rules right below it.
+   ========================================================================== */
+
+/* ---------- Grids ---------- */
+.kpi-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.two-col {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+.form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.stack {
+  display: grid;
+  gap: 16px;
+}
+
+.mb {
+  margin-bottom: 16px;
+}
+
+.mt {
+  margin-top: 16px;
+}
+
+@media (max-width: 1180px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .two-col {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .kpi-grid,
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Card ---------- */
+.card {
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+/* Card that only wraps a table — the table touches the edges */
+.card-flush {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.card-title {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.card-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.link {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+@media (max-width: 680px) {
+  .card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .card-flush {
+    padding: 0;
+  }
+}
+
+/* ---------- KPI card ---------- */
+.kpi-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.kpi-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+}
+
+.kpi-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.kpi-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.kpi-value {
+  margin-bottom: 6px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.kpi-trend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.kpi-trend.up {
+  color: var(--success);
+}
+
+.kpi-trend.down {
+  color: var(--danger);
+}
+
+.kpi-trend svg {
+  flex-shrink: 0;
+}
+
+.kpi-trend .vs {
+  margin-right: 2px;
+  font-weight: 500;
+  color: var(--text-faint);
+}
+
+@media (max-width: 680px) {
+  .kpi-value {
+    font-size: 21px;
+  }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--surface);
+}
+
+.btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn.primary {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.icon-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+}
+
+.dot-flag {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--danger);
+  border: 2px solid var(--surface);
+}
+
+@media (max-width: 420px) {
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ---------- Search box ---------- */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 230px;
+  padding: 8px 12px;
+  color: var(--text-faint);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.search-box svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+}
+
+@media (max-width: 980px) {
+  .search-box {
+    width: 170px;
+  }
+}
+
+/* ---------- Status pill ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pill.success {
+  color: var(--success);
+  background: var(--success-soft);
+}
+
+.pill.warning {
+  color: var(--warning);
+  background: var(--warning-soft);
+}
+
+.pill.danger {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.pill.info {
+  color: var(--info);
+  background: var(--info-soft);
+}
+
+.pill.neutral {
+  color: var(--text-muted);
+  background: var(--bg);
+}
+
+/* ---------- Tabs (scroll sideways when they don't fit) ---------- */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Toolbar (search / filter / actions above a table) ---------- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toolbar .search-box {
+  width: 200px;
+}
+
+@media (max-width: 680px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar .search-box {
+    flex: 1 1 100%;
+    width: auto;
+  }
+}
+
+/* ---------- Data table ---------- */
+/* The wrapper scrolls horizontally on narrow screens so the page itself
+   never overflows. */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table.data {
+  min-width: 620px;
+}
+
+table.data th {
+  padding: 10px 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+table.data td {
+  padding: 12px;
+  font-size: 13px;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+table.data tbody tr:last-child td {
+  border-bottom: none;
+}
+
+table.data tbody tr:hover {
+  background: var(--bg);
+}
+
+.cell-main {
+  font-weight: 700;
+}
+
+.cell-sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* Small rounded square holding an icon or an initial */
+.thumb {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.thumb svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------- Simple list rows & progress ---------- */
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.list-row:last-child {
+  border-bottom: none;
+}
+
+.progress {
+  height: 6px;
+  margin-top: 4px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.progress > div {
+  height: 100%;
+  border-radius: 6px;
+  background: var(--accent);
+}
+
+/* ---------- Forms ---------- */
+.section-title {
+  margin-bottom: 2px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.section-sub {
+  margin-bottom: 16px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.toggle-row:last-child {
+  border-bottom: none;
+}
+
+.switch {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: right 0.15s;
+}
+
+.switch.on {
+  background: var(--accent);
+}
+
+.switch.on::after {
+  right: 20px;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* ---------- Charts ---------- */
+/* Chart.js needs a parent with an explicit height; the chart then fills it
+   (maintainAspectRatio is false in charts.js). */
+.chart-box {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+
+.chart-box.tall {
+  height: 270px;
+}
+
+@media (max-width: 680px) {
+  .chart-box {
+    height: 200px;
+  }
+
+  .chart-box.tall {
+    height: 240px;
+  }
+}
+
+/* ---------- Avatar (initial inside a rounded square) ---------- */
+.avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.avatar .online {
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--success);
+  border: 2px solid var(--surface);
+}
+
+.unread {
+  flex-shrink: 0;
+  padding: 0 7px;
+  border-radius: 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 18px;
+  color: #fff;
+  background: var(--accent);
+}
+
+/* ---------- Dropdown (notifications + messages in the topbar) ---------- */
+.dropdown {
+  position: relative;
+}
+
+/* Invisible bridge so the panel doesn't close while the mouse travels
+   from the button to the panel. */
+.dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 70;
+  width: 340px;
+  overflow: hidden;
+  text-align: right;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-pop);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition:
+    opacity 0.15s,
+    transform 0.15s,
+    visibility 0.15s;
+}
+
+/* Hover opens it on devices with a mouse; click (.open) works everywhere */
+@media (hover: hover) {
+  .dropdown:hover .dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+
+.dropdown.open .dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.dropdown-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+}
+
+.dropdown-head span {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.dropdown-list {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+
+.dropdown-item:hover {
+  background: var(--bg);
+}
+
+.dropdown-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  margin-top: 6px;
+  border-radius: 50%;
+}
+
+.dropdown-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.dropdown-text b {
+  display: block;
+  font-size: 13px;
+}
+
+.dropdown-text p {
+  margin-top: 2px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--text-muted);
+}
+
+.dropdown-time {
+  font-size: 11px;
+  white-space: nowrap;
+  color: var(--text-faint);
+}
+
+.dropdown-foot {
+  display: block;
+  padding: 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.dropdown-foot:hover {
+  background: var(--bg);
+}
+
+/* Unread counter on top of the message icon */
+.count {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--danger);
+  border: 2px solid var(--surface);
+}
+
+.count:empty {
+  display: none;
+}
+
+/* On phones the panel spans the screen width instead of hanging off the button */
+@media (max-width: 680px) {
+  .dropdown {
+    position: static;
+  }
+
+  .dropdown::after {
+    display: none;
+  }
+
+  .dropdown-panel {
+    position: fixed;
+    top: 64px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+  }
+}

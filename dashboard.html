@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#3346ff" />
+    <title>فروش‌یار | داشبورد مدیریت فروشگاه</title>
+
+    <!-- Vazirmatn font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/chat.css" />
+  </head>
+
+  <body>
+    <!-- Dark backdrop behind the mobile drawer -->
+    <div class="sidebar-overlay" id="overlay" data-close-sidebar></div>
+
+    <!-- ============ Sidebar ============ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand-name">فروش‌یار</span>
+        <div class="brand-mark" data-icon="sparkle"></div>
+      </div>
+
+      <div class="nav-label">نمای کلی</div>
+      <nav class="nav-list" id="nav"><!-- filled by app.js --></nav>
+
+      <div class="sidebar-footer">
+        <a class="nav-item danger" href="index.html" data-icon="logout"><span>خروج</span></a>
+      </div>
+    </aside>
+
+    <!-- ============ Main ============ -->
+    <div class="main">
+      <header class="topbar">
+        <div class="row" style="gap: 12px; min-width: 0">
+          <button class="menu-btn" data-open-sidebar data-icon="menu" aria-label="باز کردن منو"></button>
+          <div class="topbar-title">
+            <h1 id="pageTitle">نمای کلی</h1>
+            <div class="sub" id="pageSubtitle">خلاصه عملکرد فروشگاه شما امروز</div>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="search-box" data-icon="search"><input placeholder="جستجو..." /></div>
+
+          <!-- Messages dropdown -->
+          <div class="dropdown" id="messagesDropdown">
+            <button class="icon-btn" data-dropdown="messagesDropdown" data-icon="chat" aria-label="پیام‌ها">
+              <span class="count" id="messageCount"></span>
+            </button>
+            <div class="dropdown-panel">
+              <div class="dropdown-head">پیام‌ها<span data-open-chat-page>مشاهده همه</span></div>
+              <div class="dropdown-list" id="messageList"></div>
+              <a class="dropdown-foot" data-open-chat-page>باز کردن چت</a>
+            </div>
+          </div>
+
+          <!-- Notifications dropdown -->
+          <div class="dropdown" id="notificationsDropdown">
+            <button
+              class="icon-btn"
+              data-dropdown="notificationsDropdown"
+              data-icon="notifications"
+              aria-label="اعلان‌ها"
+            >
+              <span class="dot-flag"></span>
+            </button>
+            <div class="dropdown-panel">
+              <div class="dropdown-head">اعلان‌ها<span data-go="notifications">مشاهده همه</span></div>
+              <div class="dropdown-list" id="notificationList"></div>
+              <a class="dropdown-foot" data-go="notifications">همه اعلان‌ها</a>
+            </div>
+          </div>
+
+          <a href="index.html" class="btn primary" data-icon="login"><span>ورود</span></a>
+        </div>
+      </header>
+
+      <main class="content" id="content"><!-- page rendered by app.js --></main>
+    </div>
+
+    <!-- Chart.js (charts are skipped quietly if the CDN is unreachable) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+    <!-- App scripts — order matters -->
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/pages.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/topbar.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

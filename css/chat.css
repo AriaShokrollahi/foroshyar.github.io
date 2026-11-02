@@ -1,0 +1,258 @@
+/* ==========================================================================
+   chat.css — messages page (conversation list + thread)
+   ========================================================================== */
+
+.chat-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  height: calc(100vh - 150px);
+  height: calc(100dvh - 150px);
+  min-height: 520px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Conversation list ---------- */
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-left: 1px solid var(--border);
+}
+
+.chat-list-head {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chat-list-head .search-box {
+  width: 100%;
+}
+
+.chat-conversations {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.conversation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+
+.conversation:hover {
+  background: var(--bg);
+}
+
+.conversation.active {
+  background: var(--accent-soft);
+}
+
+.conversation-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.conversation-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.conversation-name small {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-faint);
+}
+
+.conversation-last {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.conversation-last span:first-child {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Thread ---------- */
+.chat-thread {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.thread-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.thread-name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.thread-sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.back-btn {
+  display: none;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.back-btn svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+}
+
+.thread-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+/* In RTL, flex-start is the right edge: received messages sit on the right,
+   sent messages on the left. */
+.bubble {
+  max-width: 72%;
+  padding: 9px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.bubble small {
+  display: block;
+  margin-top: 2px;
+  font-size: 10.5px;
+  opacity: 0.6;
+}
+
+.bubble.them {
+  align-self: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-right-radius: 4px;
+}
+
+.bubble.me {
+  align-self: flex-end;
+  color: #fff;
+  background: var(--accent);
+  border-top-left-radius: 4px;
+}
+
+.bubble.typing {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.thread-form {
+  display: flex;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.thread-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  font-size: 13px;
+  outline: none;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.thread-form input:focus {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.send-btn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  background: var(--accent);
+}
+
+/* The paper plane icon points right; flip it for RTL */
+.send-btn svg {
+  width: 17px;
+  height: 17px;
+  transform: scaleX(-1);
+}
+
+/* ---------- Responsive: show either the list or the thread ---------- */
+@media (max-width: 860px) {
+  .chat-shell {
+    grid-template-columns: minmax(0, 1fr);
+    height: calc(100vh - 130px);
+    height: calc(100dvh - 130px);
+  }
+
+  .chat-list {
+    border-left: none;
+  }
+
+  .chat-thread {
+    display: none;
+  }
+
+  .chat-shell.show-thread .chat-list {
+    display: none;
+  }
+
+  .chat-shell.show-thread .chat-thread {
+    display: flex;
+  }
+
+  .back-btn {
+    display: flex;
+  }
+
+  .bubble {
+    max-width: 86%;
+  }
+}

@@ -1,0 +1,131 @@
+/* ==========================================================================
+   base.css — design tokens, reset and tiny shared utilities
+   --------------------------------------------------------------------------
+   Responsive breakpoints used across the whole project (max-width):
+     1180px  small laptop   → 4-column grids become 2 columns
+      980px  tablet         → two-column layouts stack
+      860px  tablet / phone → sidebar turns into a slide-in drawer
+      680px  phone          → single column, tighter spacing
+      420px  small phone    → icon-only buttons, smallest paddings
+   ========================================================================== */
+
+:root {
+  /* Brand */
+  --brand-1: #3346ff;
+  --brand-2: #1c22e0;
+  --accent: #3346ff;
+  --accent-soft: #eaecff;
+
+  /* Surfaces & text */
+  --bg: #f3f5fb;
+  --surface: #ffffff;
+  --text: #12142b;
+  --text-muted: #6b7089;
+  --text-faint: #9296ac;
+  --border: #e7e9f3;
+
+  /* Status colors */
+  --success: #16a34a;
+  --success-soft: #e7f8ee;
+  --warning: #d97706;
+  --warning-soft: #fdf3e3;
+  --danger: #dc2626;
+  --danger-soft: #fce9e9;
+  --info: #0891b2;
+  --info-soft: #e3f6fa;
+
+  /* Shape & depth */
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 2px rgba(18, 20, 43, 0.04), 0 8px 24px -12px rgba(18, 20, 43, 0.1);
+  --shadow-pop: 0 18px 40px -12px rgba(18, 20, 43, 0.22);
+
+  /* Layout */
+  --sidebar-width: 248px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Vazirmatn", sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+input,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+svg,
+canvas {
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d7dae8;
+  border-radius: 8px;
+}
+
+/* ---------- Utilities ---------- */
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* Grid children are allowed to shrink — prevents charts/tables from
+   forcing the layout wider than the screen. */
+.grid > * {
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
